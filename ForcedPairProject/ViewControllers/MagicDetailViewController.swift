@@ -10,21 +10,43 @@ import UIKit
 
 class MagicDetailViewController: UIViewController {
 
+    @IBOutlet weak var magicCollectionView: UICollectionView!
+    public var magicCards: MagicCardInfo!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        magicCollectionView.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
 }
+
+extension MagicDetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return magicCards.foreignNames.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MagicDetailCell", for: indexPath) as? MagicDetailCell else { return UICollectionViewCell() }
+        let magicToSet = magicCards.foreignNames[indexPath.row]
+        ImageHelper.shared.fetchImage(urlString: magicToSet.imageUrl) { (appError, image) in
+            if let appError = appError {
+                print(appError.errorMessage())
+            } else if let image = image {
+                cell.magicDetailImage.image = image
+            }
+        }
+        cell.magicDetailName.text = magicToSet.name
+        cell.magivDetailLanguage.text = magicToSet.language
+        cell.magicDetailDescription.text = magicToSet.text
+        return cell
+        
+    }
+}
+
+    
+
+

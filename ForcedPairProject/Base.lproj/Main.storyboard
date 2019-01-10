@@ -78,7 +78,7 @@
         <!--Magic Detail View Controller-->
         <scene sceneID="rsc-UR-xh6">
             <objects>
-                <viewController id="LFF-yq-jst" customClass="MagicDetailViewController" customModule="ForcedPairProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MagicDetailViewController" id="LFF-yq-jst" customClass="MagicDetailViewController" customModule="ForcedPairProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFu-EY-MpF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="pjD-nT-U0W">
                                 <rect key="frame" x="37.5" y="143.5" width="300" height="400"/>
                                 <color key="backgroundColor" red="1" green="0.27844987900000001" blue="0.58697806990000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dLS-ox-DoE">
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="dLS-ox-DoE">
                                     <size key="itemSize" width="239" height="443"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -94,7 +94,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MagicDetailCell" id="VYJ-pb-bh0" customClass="MagicDetailCell" customModule="ForcedPairProject" customModuleProvider="target">
-                                        <rect key="frame" x="30.5" y="0.0" width="239" height="443"/>
+                                        <rect key="frame" x="0.0" y="-21.5" width="239" height="443"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="239" height="443"/>
@@ -164,6 +164,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mv0-fn-utb"/>
                     </view>
+                    <connections>
+                        <outlet property="magicCollectionView" destination="pjD-nT-U0W" id="nWT-O7-r6M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l7v-Yd-382" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -347,6 +350,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cpK-Cy-rGH" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ddg-se-fvY">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
