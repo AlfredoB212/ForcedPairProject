@@ -8,13 +8,13 @@
 
 import Foundation
 struct PokemonCards: Codable {
-    let cards: [CardInfo]
+    let cards: [PokemonCardInfo]
 }
 
-struct CardInfo: Codable {
+struct PokemonCardInfo: Codable {
     let attacks: [AttackInfo]
-    let imageUrl: String
-    let imageUrlHiRes: String
+    let imageUrl: String?
+    let imageUrlHiRes: String?
 }
 
 struct AttackInfo: Codable {
@@ -22,3 +22,5 @@ struct AttackInfo: Codable {
     let text: String?
     let damage: String
 }
+
+

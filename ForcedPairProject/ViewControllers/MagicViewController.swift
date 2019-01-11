@@ -46,6 +46,10 @@ extension MagicViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MagicCell", for: indexPath) as? MagicCell else { return UICollectionViewCell()}
+
+        
+   
+
         let magicToSet = magicCards[indexPath.row]
         let imageToSet = filteredImages[indexPath.row]
         var urlString = ""
@@ -68,6 +72,7 @@ extension MagicViewController: UICollectionViewDataSource {
             }
         }
             return cell
+
     }
     
     
