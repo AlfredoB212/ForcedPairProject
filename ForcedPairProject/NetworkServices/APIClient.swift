@@ -31,7 +31,7 @@ final class APIClient {
         }
     }
     
-    static func getPokemonCard(completionHandler: @escaping (AppError?, [MagicCardInfo]?) -> Void) {
+    static func getPokemonCard(completionHandler: @escaping (AppError?, [PokemonCardInfo]?) -> Void) {
         NetworkHelper.shared.performDataTask(endpointURLString: "https://api.pokemontcg.io/v1/cards?contains=imageUrl,imageUrlHiRes,attacks") { (appError, data, httpResponse) in
             if let appError = appError {
                 completionHandler(appError, nil)
@@ -44,8 +44,8 @@ final class APIClient {
             }
             if let data = data {
                 do {
-                    let pokemonData = try JSONDecoder().decode([MagicCardInfo].self, from: data)
-                    completionHandler(nil, pokemonData)
+                    let pokemonData = try JSONDecoder().decode(PokemonCards.self, from: data)
+                    completionHandler(nil, pokemonData.cards)
                 } catch {
                     completionHandler(AppError.decodingError(error),nil)
                 }

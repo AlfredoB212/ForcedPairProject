@@ -35,8 +35,10 @@ extension MagicViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MagicCell", for: indexPath) as? MagicCell else { return UICollectionViewCell()}
-        guard let url = URL.init(string: magicCards[indexPath.row]) else { return UICollectionViewCell() }
-        URLSession.shared.dataTask(with: url)
+        
+      //  guard let url = URL.init(string: magicCards[indexPath.row]) else { return UICollectionViewCell() }
+        //URLSession.shared.dataTask(with: url)
+        return cell
     }
     
     
