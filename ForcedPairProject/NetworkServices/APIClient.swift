@@ -10,20 +10,21 @@ import Foundation
 
 final class APIClient {
     static func getMagicCard(completionHandler: @escaping (AppError?, [MagicCardInfo]?) -> Void) {
-        NetworkHelper.shared.performDataTask(endpointURLString: "https://api.magicthegathering.io/v1/cards?contains=imageUrl") { (appError, data, httpResponse) in
+        let getEndPointMagic = "https://api.magicthegathering.io/v1/cards?contains=imageUrl"
+        NetworkHelper.shared.performDataTask(endpointURLString: getEndPointMagic) { (appError, data, httpResponse) in
             if let appError = appError {
                 completionHandler(appError, nil)
             }
-            guard let response = httpResponse,
-                (200...299).contains(response.statusCode) else {
-                    let statusCode = httpResponse?.statusCode ?? -999
-                    completionHandler(AppError.badStatusCode(String(statusCode)), nil)
-                    return
-            }
+//            guard let response = httpResponse,
+//                (200...299).contains(response.statusCode) else {
+//                    let statusCode = httpResponse?.statusCode ?? -999
+//                    completionHandler(AppError.badStatusCode(String(statusCode)), nil)
+//                    return
+//            }
             if let data = data {
                 do {
-                 let magicData = try JSONDecoder().decode([MagicCardInfo].self, from: data)
-                    completionHandler(nil, magicData)
+                 let magicData = try JSONDecoder().decode(MagicCards.self, from: data)
+                    completionHandler(nil, magicData.cards)
                 } catch {
                     completionHandler(AppError.decodingError(error),nil)
                 }
@@ -36,12 +37,12 @@ final class APIClient {
             if let appError = appError {
                 completionHandler(appError, nil)
             }
-            guard let response = httpResponse,
-                (200...).contains(response.statusCode) else {
-                    let statusCode = httpResponse?.statusCode ?? -999
-                    completionHandler(AppError.badStatusCode(String(statusCode)), nil)
-                    return
-            }
+//            guard let response = httpResponse,
+//                (200...).contains(response.statusCode) else {
+//                    let statusCode = httpResponse?.statusCode ?? -999
+//                    completionHandler(AppError.badStatusCode(String(statusCode)), nil)
+//                    return
+//            }
             if let data = data {
                 do {
                     let pokemonData = try JSONDecoder().decode(PokemonCards.self, from: data)

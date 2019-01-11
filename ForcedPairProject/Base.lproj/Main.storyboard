@@ -78,7 +78,7 @@
         <!--Magic Detail View Controller-->
         <scene sceneID="rsc-UR-xh6">
             <objects>
-                <viewController id="LFF-yq-jst" customClass="MagicDetailViewController" customModule="ForcedPairProject" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MagicDetailViewController" id="LFF-yq-jst" customClass="MagicDetailViewController" customModule="ForcedPairProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="WFu-EY-MpF">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -164,6 +164,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="mv0-fn-utb"/>
                     </view>
+                    <connections>
+                        <outlet property="magicCollectionView" destination="pjD-nT-U0W" id="nWT-O7-r6M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="l7v-Yd-382" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
